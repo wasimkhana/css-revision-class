@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Overrides Examples</title>
+    <style>
+        /* Specificity */
+        p {
+            color: blue; /* specificity: 0,0,0,1 */
+        }
+        .highlight {
+            color: green; /* specificity: 0,0,1,0 */
+        }
+        #unique {
+            color: red; /* specificity: 0,1,0,0 */
+        }
+
+        /* Cascade */
+        .example2 p {
+            color: blue; /* This will be overridden by the later rule */
+        }
+        .example2 p {
+            color: green; /* This rule is later in the stylesheet and will be applied */
+        }
+
+        /* Inline Styles */
+        .example3 p {
+            color: blue; /* This will be overridden by the inline style */
+        }
+
+        /* !important */
+        .example4 p {
+            color: blue !important; /* This will override the inline style */
+        }
+
+        /* Inheritance */
+        .example5 div {
+            color: blue;
+        }
+        .example5 p {
+            color: inherit; /* This will inherit the color from the parent div */
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Overrides Examples</h1>
+
+    <!-- Specificity -->
+    <section>
+        <h2>Specificity</h2>
+        <p>The specificity of a CSS selector determines which rule is applied when multiple rules could apply to the same element. The specificity is calculated based on the types of selectors used.</p>
+        <p>This paragraph is blue due to the element selector.</p>
+        <p class="highlight">This paragraph is green due to the class selector.</p>
+        <p id="unique" class="highlight">This paragraph is red due to the higher specificity of the ID selector.</p>
+    </section>
+
+    <!-- Cascade -->
+    <section class="example2">
+        <h2>The Cascade</h2>
+        <p>The cascade determines the final styles for an element by applying rules from various sources in a specific order. Rules are applied in the order they appear, with later rules overriding earlier ones if they have the same specificity.</p>
+        <p>This paragraph is green because the later rule overrides the earlier one.</p>
+    </section>
+
+    <!-- Inline Styles -->
+    <section class="example3">
+        <h2>Inline Styles</h2>
+        <p>Inline styles have the highest specificity and will override any external or internal styles unless marked with <code>!important</code>.</p>
+        <p style="color: green;">This paragraph is green because the inline style has the highest specificity.</p>
+    </section>
+
+    <!-- !important -->
+    <section class="example4">
+        <h2>!important</h2>
+        <p>The <code>!important</code> declaration overrides any other rules, regardless of specificity. However, it should be used sparingly, as it makes code harder to maintain.</p>
+        <p style="color: green;">This paragraph is blue because the <code>!important</code> rule overrides the inline style.</p>
+    </section>
+
+    <!-- Inheritance -->
+    <section class="example5">
+        <h2>Inheritance</h2>
+        <p>Some CSS properties are inherited from parent elements to child elements. If a property is not explicitly set on a child element, it will inherit the value from its parent.</p>
+        <div>
+            <p>This paragraph is blue because it inherits the color from the parent div.</p>
+        </div>
+    </section>
+</body>
+</html>
+
